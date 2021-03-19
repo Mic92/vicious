@@ -352,5 +352,18 @@ function vicious.call_async(wtype, format, warg, callback)
 end
 -- }}}
 
+-- {{{ Change the timer of a registered widget.
+function vicious.change_timer(reg, timeout)
+  if not reg then return end
+  local cur = reg.timeout
+  if timeout ~= cur then
+    vicious.unregister(nil, true, reg)
+    reg.timeout = timeout
+    regregister(reg)
+  end
+  return cur
+end
+-- }}}
+
 return vicious
 -- }}}
